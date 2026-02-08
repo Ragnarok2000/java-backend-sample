@@ -9,20 +9,19 @@ import java.util.List;
 @Service
 public class ItemService {
 
+    private List<Item> items = new ArrayList<>();
+    private int currentId = 1;
 
-        private List<Item> items = new ArrayList<>();
-
-        public Item addItem(Item item) {
-            items.add(item);
-            return item;
-        }
-
-        public Item getItemById(int id) {
-            return items.stream()
-                    .filter(i -> i.getId() == id)
-                    .findFirst()
-                    .orElse(null);
-        }
+    public Item addItem(Item item) {
+        item.setId(currentId++);
+        items.add(item);
+        return item;
     }
 
-
+    public Item getItemById(int id) {
+        return items.stream()
+                .filter(i -> i.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
+}
