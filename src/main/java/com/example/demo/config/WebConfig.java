@@ -13,10 +13,9 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOrigins(
                         "http://localhost:5173",                 // local dev (Vite)
                         "http://localhost:3000",                 // local dev (CRA)
-                        "https://react-frontend-sample.vercel.app" // deployed frontend
+                        "https://react-frontend-sample.vercel.app" // deployed frontend (no trailing slash!)
                 )
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                .allowedHeaders("*")
-                .allowCredentials(true);
+                .allowedMethods("*")   // allow all HTTP methods
+                .allowedHeaders("*");  // allow all headers
     }
 }
